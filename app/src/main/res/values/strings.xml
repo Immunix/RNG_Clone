@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">RNG Clone</string>
+    <string name="history_button">History</string>
+    <string name="settings_button">Settings</string>
+    <string name="rng_fragment">RNG</string>
+    <string name="dice_fragment">DICE</string>
+    <string name="lotto_fragment">LOTTO</string>
+    <string name="coins_fragment">COINS</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
