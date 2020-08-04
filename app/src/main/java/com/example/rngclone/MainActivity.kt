@@ -1,10 +1,9 @@
 package com.example.rngclone
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
-import android.widget.TableLayout
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.viewpager.widget.ViewPager
 import com.google.android.material.tabs.TabItem
@@ -28,6 +27,27 @@ class MainActivity : AppCompatActivity() {
         val lottoTab = findViewById<TabItem>(R.id.lotto_tab)
         val coinsTab = findViewById<TabItem>(R.id.coins_tab)
         val viewPag = findViewById<ViewPager>(R.id.viewPager)
+
+        // PagerAdapter stuff. need to know more about this
+        val pagerAdapter =
+            PagerAdapter(supportFragmentManager, tabBar.tabCount)
+        viewPag.adapter = pagerAdapter
+
+        // careful next time. i used the id of viewPager instead of using the variable so it didn't work at first
+        viewPag.addOnPageChangeListener(
+            TabLayout.TabLayoutOnPageChangeListener(tab_layout))
+        tab_layout.addOnTabSelectedListener(object: TabLayout.OnTabSelectedListener {
+
+            override fun onTabReselected(tab: TabLayout.Tab?) {}
+
+            override fun onTabUnselected(tab: TabLayout.Tab?) {}
+
+            override fun onTabSelected(tab: TabLayout.Tab) {
+                viewPag.currentItem = tab.position
+        }
+
+        })
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -36,17 +56,4 @@ class MainActivity : AppCompatActivity() {
         inflater.inflate(R.menu.settings_menu, menu)
         return true
     }
-
-/*
-// make it work ?
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            R.id.history_btn -> Toast.makeText(this, "History pressed", Toast.LENGTH_SHORT)
-            R.id.settings_btn -> Toast.makeText(this, "Settings pressed", Toast.LENGTH_SHORT)
-            R.id.setting1 -> Toast.makeText(this, "Setting 1 pressed", Toast.LENGTH_SHORT)
-            R.id.setting2 -> Toast.makeText(this, "Setting 2 pressed", Toast.LENGTH_SHORT)
-            else -> return super.onOptionsItemSelected(item)
-        }
-    }
- */
 }
