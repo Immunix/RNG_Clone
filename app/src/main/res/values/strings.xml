@@ -13,7 +13,8 @@
     <string name="max">Maximum</string>
     <string name="numbers_needed">How many numbers do you need?</string>
     <string name="exclude_numbers">Exclude these numbers</string>
-    <integer name="min">0</integer>
-    <integer name="max">10</integer>
+    <string name="minNum">0</string>
+    <string name="maxNum">10</string>
     <string name="rng_button_text">generate</string>
+    <string name="display_result">reeeee</string>
 </resources>

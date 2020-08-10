@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -26,9 +27,9 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_below="@id/top_title"
-        >
+        android:baselineAligned="false">
 
-        <RelativeLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/inner_layout_left"
             android:layout_width="0dp"
             android:layout_weight="1"
@@ -39,45 +40,64 @@
                 android:id="@+id/txt_view_left"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="@string/min" />
+                android:layout_marginVertical="12dp"
+                android:text="@string/min"
+                app:layout_constraintBottom_toTopOf="@id/edit_txt_min"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <EditText
-                android:layout_width="wrap_content"
+                android:id="@+id/edit_txt_min"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginVertical="16dp"
-                android:layout_below="@id/txt_view_left"
+                android:layout_marginBottom="12dp"
+                android:maxLines="1"
                 android:inputType="number"
-                android:text="@integer/min"
-                android:background="#0900FB"/>
+                android:maxLength="9"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/txt_view_left"
+                android:importantForAutofill="no" />
 
-        </RelativeLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <RelativeLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/inner_layout_right"
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="match_parent"
-            android:background="#FF0000"
-            >
+            android:layout_weight="1"
+            android:background="#FF0000">
 
             <TextView
                 android:id="@+id/txt_view_right"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="@string/max"/>
+                android:layout_marginVertical="12dp"
+                android:text="@string/max"
+                app:layout_constraintBottom_toTopOf="@+id/edit_txt_max"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                 />
 
             <EditText
-                android:layout_width="wrap_content"
+                android:id="@+id/edit_txt_max"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginVertical="16dp"
-                android:layout_below="@id/txt_view_right"
+                android:layout_marginBottom="12dp"
+                android:maxLines="1"
                 android:inputType="number"
-                android:text="@integer/max"
-                android:background="#13AAF8"/>
+                android:maxLength="9"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/txt_view_right"
+                android:importantForAutofill="no" />
 
-        </RelativeLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
     </LinearLayout>
 
     <LinearLayout
@@ -91,14 +111,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginVertical="16dp"
+            android:layout_marginHorizontal="16dp"
             android:text="@string/numbers_needed"
             />
 
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="KEK TEST TEXT"
-            />
+            android:layout_marginVertical="16dp"
+            android:layout_marginHorizontal="16dp"
+            android:hint="1"
+            android:maxLength="3"
+            android:importantForAutofill="no"
+            android:inputType="number" />
     </LinearLayout>
 
     <LinearLayout
@@ -111,23 +136,58 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginVertical="16dp"
+            android:layout_marginHorizontal="16dp"
             android:text="@string/exclude_numbers"/>
 
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="SAMPLE TEXT AGANE"/>
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginVertical="16dp"
+            android:hint="None"
+            android:maxLength="9"
+            android:importantForAutofill="no"
+            android:inputType="number" />
 
     </LinearLayout>
 
-    <Button
-        android:id="@+id/rng_generate_btn"
+    <FrameLayout
+        android:id="@+id/fl_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/linear_outer_last"
-        android:background="#2222E4"
-        android:text="@string/rng_button_text"
-        android:textColor="@color/white"/>
+        android:layout_below="@id/linear_outer_last">
+
+        <Button
+            android:id="@+id/rng_generate_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:text="@string/rng_button_text"
+            android:textColor="@color/white"/>
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_below="@id/fl_btn">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:text="sample text" />
+
+        <TextView
+            android:id="@+id/display_result"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginVertical="16dp"
+            android:gravity="start"
+            />
+
+    </LinearLayout>
 
 
 </RelativeLayout>

@@ -1,17 +1,22 @@
 package com.example.rngclone
 
+import android.os.Build
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
+import android.widget.EditText
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.viewpager.widget.ViewPager
 import com.google.android.material.tabs.TabItem
 import com.google.android.material.tabs.TabLayout
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.fragment_rng.*
 
 
 class MainActivity : AppCompatActivity() {
+    @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -28,10 +33,12 @@ class MainActivity : AppCompatActivity() {
         val coinsTab = findViewById<TabItem>(R.id.coins_tab)
         val viewPag = findViewById<ViewPager>(R.id.viewPager)
 
+
         // PagerAdapter stuff. need to know more about this
         val pagerAdapter =
             PagerAdapter(supportFragmentManager, tabBar.tabCount)
         viewPag.adapter = pagerAdapter
+
 
         // careful next time. i used the id of viewPager instead of using the variable so it didn't work at first
         viewPag.addOnPageChangeListener(
@@ -44,10 +51,14 @@ class MainActivity : AppCompatActivity() {
 
             override fun onTabSelected(tab: TabLayout.Tab) {
                 viewPag.currentItem = tab.position
+        }})
+
+
+        if (savedInstanceState == null) {
+            supportFragmentManager
+                .beginTransaction()
+                .commitAllowingStateLoss()
         }
-
-        })
-
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -56,4 +67,5 @@ class MainActivity : AppCompatActivity() {
         inflater.inflate(R.menu.settings_menu, menu)
         return true
     }
+
 }
