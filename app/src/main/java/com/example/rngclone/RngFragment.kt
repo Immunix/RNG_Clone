@@ -41,3 +41,9 @@ class RngFragment : Fragment() {
         }
     }
 }
+
+// TODO: 10/08/2020 set default values for the edit text
+// TODO: 10/08/2020 check the input numbers to see if min < max
+// TODO: 10/08/2020 add a loop to generate more numbers when requested
+// TODO: 10/08/2020 add an array to store the numbers in and display that instead
+// TODO: 10/08/2020 perhaps another array for a list of excluded numbers
