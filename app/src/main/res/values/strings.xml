@@ -1,20 +1,18 @@
 <resources>
-    <!--RNG FRAGMENT-->
     <string name="app_name">RNG Clone</string>
-    <string name="history_button">History</string>
-    <string name="settings_button">Settings</string>
     <string name="rng_fragment">RNG</string>
     <string name="dice_fragment">DICE</string>
     <string name="lotto_fragment">LOTTO</string>
     <string name="coins_fragment">COINS</string>
+    <string name="history_button">History</string>
+    <string name="settings_button">Settings</string>
+
+    <!--RNG FRAGMENT-->
     <string name="rng_frag_xml">Random Number Generator</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="min">Minimum</string>
     <string name="max">Maximum</string>
     <string name="numbers_needed">How many numbers do you need?</string>
     <string name="exclude_numbers">Exclude these numbers</string>
-    <string name="minNum">0</string>
-    <string name="maxNum">10</string>
     <string name="rng_button_text">generate</string>
 
     <!--DICE FRAGMENT-->
@@ -37,6 +35,11 @@
     <string name="lotto_title">Lottery Simulator</string>
     <string name="lotto_question">Which lottery are you simulating?</string>
     <string name="lotto_button">Simulate</string>
+
+    <string-array name="lotto_choices">
+        <item>Lotto 6/49</item>
+        <item>Lotto 5/40</item>
+    </string-array>
 
     <!--COINS FRAGMENT-->
     <string name="coins_title">Coin Flipper</string>

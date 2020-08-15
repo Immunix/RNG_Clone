@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LottoFragment">
+    tools:context=".LottoFragment"
+    android:id="@+id/lotto_main_lay">
 
     <FrameLayout
         android:id="@+id/top_title"
@@ -36,13 +37,13 @@
             android:layout_marginHorizontal="16dp"
             android:text="@string/lotto_question"/>
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_weight="1"
+        <Spinner
+            android:id="@+id/lotto_spinner"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginVertical="16dp"
             android:layout_marginHorizontal="16dp"
-            android:text="change this to popup menu"/>
+            />
 
     </LinearLayout>
 
@@ -66,7 +67,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/lotto_lin_2">
+        android:layout_below="@id/lotto_lin_2"
+        >
 
         <TextView
             android:id="@+id/lotto_results"
@@ -74,7 +76,9 @@
             android:layout_height="wrap_content"
             android:layout_marginVertical="16dp"
             android:layout_marginHorizontal="16dp"
-            android:text="generated nums here"/>
+            android:textSize="20sp"
+            android:textStyle="bold"
+            />
 
     </LinearLayout>
 

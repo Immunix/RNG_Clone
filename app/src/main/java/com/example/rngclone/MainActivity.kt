@@ -53,7 +53,7 @@ class MainActivity : AppCompatActivity() {
                 viewPag.currentItem = tab.position
         }})
 
-
+        // not sure if this does anything for me. gotta ask konrad
         if (savedInstanceState == null) {
             supportFragmentManager
                 .beginTransaction()

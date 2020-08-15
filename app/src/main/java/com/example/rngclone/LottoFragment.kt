@@ -1,59 +1,100 @@
 package com.example.rngclone
 
+import android.os.Build
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import androidx.annotation.RequiresApi
+import kotlinx.android.synthetic.main.fragment_lotto.*
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [LottoFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class LottoFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private val lottoArray = ArrayList<Int>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_lotto, container, false)
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment LottoFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            LottoFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+    @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        var pos = 0
+
+        //  probably can do without the variable
+        val spinner = lotto_spinner
+
+        val adapter = ArrayAdapter.createFromResource(
+            context!!, // need to learn more about how this works
+            R.array.lotto_choices,
+            android.R.layout.simple_spinner_item
+        )
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        spinner.adapter = adapter
+
+        spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+            override fun onNothingSelected(p0: AdapterView<*>?) {
+
+            }
+
+            override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+                pos = spinner.selectedItemPosition
+            }
+        }
+
+        lotto_button.setOnClickListener {
+
+            if (lotto_results != null) {
+                lottoArray.clear()
+            }
+
+            when (pos) {
+                0 -> {
+                    lottoRoFun()
+                    lotto_results.text = lottoArray.asIterable().joinToString(", ")
+                }
+                1 -> {
+                    lotto5Fun()
+                    lotto_results.text = lottoArray.asIterable().joinToString(", ")
                 }
             }
+        }
+    }
+
+    @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
+    fun lottoRoFun () {
+        var num: Int
+
+         while (lottoArray.size <= 5) {
+             num = randomNumber(1, 49)
+
+             if (num !in lottoArray) {
+                 lottoArray.add(num)
+             } else {
+                 continue
+             }
+        }
+    }
+
+    @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
+    fun lotto5Fun () { // can be changed to something else. used just as a placeholder
+        var num: Int
+
+        while (lottoArray.size <= 4) {
+            num = randomNumber(1, 40)
+
+            if (num !in lottoArray) {
+                lottoArray.add(num)
+            } else {
+                continue
+            }
+        }
     }
 }
