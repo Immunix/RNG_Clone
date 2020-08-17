@@ -4,7 +4,6 @@ import android.os.Build
 import androidx.annotation.RequiresApi
 import java.util.concurrent.ThreadLocalRandom
 
-// i think i can use this for every tab
 @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
 fun randomNumber (startNum: Int, endNum: Int): Int {
     return ThreadLocalRandom.current().nextInt(startNum, (endNum + 1))

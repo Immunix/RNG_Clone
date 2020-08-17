@@ -11,13 +11,8 @@ import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_coins.*
-import kotlinx.android.synthetic.main.fragment_rng.*
 
 class CoinsFragment : Fragment() {
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

@@ -1,6 +1,7 @@
 package com.example.rngclone
 
 import android.annotation.SuppressLint
+import android.app.AlertDialog
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
@@ -13,10 +14,6 @@ import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_rng.*
 
 class RngFragment : Fragment() {
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,6 +33,33 @@ class RngFragment : Fragment() {
 
         val numGenerated = ArrayList<String>() // array to store the numbers
         var result: Int
+
+        // trying to handle excluded numbers with an AlertDialog
+        btn_excluded.setOnClickListener {
+
+            val alert = AlertDialog.Builder(context)
+
+            alert.setTitle("Excluded Numbers")
+            alert.setMessage("You currently aren't preventing any numbers from being generated.")
+
+            alert.setNeutralButton("CLEAR") {_, _ -> // to ask konrad what these _ do
+                // this should clear the list
+                // this is only placed on the far left
+            }
+
+            alert.setPositiveButton("OK") { _, _ ->
+                // this does nothing
+                // far right
+            }
+
+            alert.setNegativeButton("EDIT") {_, _ ->
+                // start intent here
+                // trying to replicate the placement of the rng app
+                // to my understanding functionally they are the same
+            }
+
+            alert.create().show()
+        }
 
         rng_generate_btn.setOnClickListener {
 
@@ -63,14 +87,6 @@ class RngFragment : Fragment() {
                     .setTextColor(Color.WHITE)
                     .show()
             }
-        }
-    }
-
-    // not sure if this is needed. will try to remove in CoinsFragment
-    companion object {
-        @JvmStatic
-        fun newInstance(): RngFragment {
-            return RngFragment()
         }
     }
 }

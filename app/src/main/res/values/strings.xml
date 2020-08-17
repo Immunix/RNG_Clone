@@ -14,6 +14,7 @@
     <string name="numbers_needed">How many numbers do you need?</string>
     <string name="exclude_numbers">Exclude these numbers</string>
     <string name="rng_button_text">generate</string>
+    <string name="none">None</string>
 
     <!--DICE FRAGMENT-->
     <string name="dice_title">Dice Roller</string>

@@ -11,13 +11,8 @@ import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_dice.*
-import kotlinx.android.synthetic.main.fragment_rng.*
 
 class DiceFragment : Fragment() {
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -74,7 +69,6 @@ class DiceFragment : Fragment() {
                     dieSum += result
                 }
 
-                // make this thing happy sometime
                 roll_result.text =
                     resultsArray.asIterable().joinToString(", ", prefix = "Roll(s): ")
                 roll_sum.text = "Sum: $dieSum"
@@ -84,13 +78,6 @@ class DiceFragment : Fragment() {
                     .setTextColor(Color.WHITE)
                     .show()
             }
-        }
-    }
-
-    companion object {
-        @JvmStatic
-        fun newInstance(): DiceFragment {
-            return DiceFragment()
         }
     }
 }

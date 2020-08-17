@@ -4,16 +4,12 @@ import android.os.Build
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
-import android.widget.EditText
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.viewpager.widget.ViewPager
-import com.google.android.material.tabs.TabItem
 import com.google.android.material.tabs.TabLayout
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.fragment_rng.*
-
 
 class MainActivity : AppCompatActivity() {
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
@@ -25,20 +21,14 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(toolbar_main as Toolbar?)
         supportActionBar?.setDisplayShowTitleEnabled(true)
 
-        // initializing TabLayout, TabItems and ViewPager
+        // initializing TabLayout and ViewPager
         val tabBar = findViewById<TabLayout>(R.id.tab_layout)
-        val rngTab = findViewById<TabItem>(R.id.rng_tab)
-        val diceTab = findViewById<TabItem>(R.id.dice_tab)
-        val lottoTab = findViewById<TabItem>(R.id.lotto_tab)
-        val coinsTab = findViewById<TabItem>(R.id.coins_tab)
         val viewPag = findViewById<ViewPager>(R.id.viewPager)
-
 
         // PagerAdapter stuff. need to know more about this
         val pagerAdapter =
             PagerAdapter(supportFragmentManager, tabBar.tabCount)
         viewPag.adapter = pagerAdapter
-
 
         // careful next time. i used the id of viewPager instead of using the variable so it didn't work at first
         viewPag.addOnPageChangeListener(
@@ -54,11 +44,18 @@ class MainActivity : AppCompatActivity() {
         }})
 
         // not sure if this does anything for me. gotta ask konrad
-        if (savedInstanceState == null) {
-            supportFragmentManager
-                .beginTransaction()
-                .commitAllowingStateLoss()
-        }
+        //if (savedInstanceState == null) {
+//            supportFragmentManager
+//                .beginTransaction()
+//                .commitAllowingStateLoss()
+        //}
+
+//        if (savedInstanceState != null) {
+//            supportFragmentManager.getFragment(savedInstanceState, "RngFrag")
+//            supportFragmentManager.getFragment(savedInstanceState, "DiceFrag")
+//            supportFragmentManager.getFragment(savedInstanceState, "LottoFrag")
+//            supportFragmentManager.getFragment(savedInstanceState, "CoinsFrag")
+//        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -68,6 +65,21 @@ class MainActivity : AppCompatActivity() {
         return true
     }
 
-}
+//    override fun onSaveInstanceState(outState: Bundle) {
+//        super.onSaveInstanceState(outState)
+//
+//        supportFragmentManager.putFragment(outState, "RngFrag", RngFragment())
+//        supportFragmentManager.putFragment(outState, "DiceFrag", DiceFragment())
+//        supportFragmentManager.putFragment(outState, "LottoFrag", LottoFragment())
+//        supportFragmentManager.putFragment(outState, "CoinsFrag", CoinsFragment())
+//    }
 
-// TODO: 10/08/2020 deal with orientation change
+//    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+//        super.onRestoreInstanceState(savedInstanceState)
+//
+//        supportFragmentManager.getFragment(savedInstanceState, "RngFrag")
+//        supportFragmentManager.getFragment(savedInstanceState, "DiceFrag")
+//        supportFragmentManager.getFragment(savedInstanceState, "LottoFrag")
+//        supportFragmentManager.getFragment(savedInstanceState, "CoinsFrag")
+//    }
+}
