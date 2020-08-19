@@ -2,6 +2,7 @@ package com.example.rngclone
 
 import android.os.Build
 import android.os.Bundle
+import android.os.PersistableBundle
 import android.view.Menu
 import android.view.MenuInflater
 import androidx.annotation.RequiresApi
@@ -10,6 +11,7 @@ import androidx.appcompat.widget.Toolbar
 import androidx.viewpager.widget.ViewPager
 import com.google.android.material.tabs.TabLayout
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.fragment_rng.*
 
 class MainActivity : AppCompatActivity() {
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
@@ -29,6 +31,7 @@ class MainActivity : AppCompatActivity() {
         val pagerAdapter =
             PagerAdapter(supportFragmentManager, tabBar.tabCount)
         viewPag.adapter = pagerAdapter
+        viewPag.offscreenPageLimit = 3 // this makes the tabs not reset but i don't like it!!
 
         // careful next time. i used the id of viewPager instead of using the variable so it didn't work at first
         viewPag.addOnPageChangeListener(
@@ -64,7 +67,7 @@ class MainActivity : AppCompatActivity() {
         inflater.inflate(R.menu.settings_menu, menu)
         return true
     }
-
+/*
 //    override fun onSaveInstanceState(outState: Bundle) {
 //        super.onSaveInstanceState(outState)
 //
@@ -81,5 +84,19 @@ class MainActivity : AppCompatActivity() {
 //        supportFragmentManager.getFragment(savedInstanceState, "DiceFrag")
 //        supportFragmentManager.getFragment(savedInstanceState, "LottoFrag")
 //        supportFragmentManager.getFragment(savedInstanceState, "CoinsFrag")
+//    }
+
+ */
+
+//    override fun onSaveInstanceState(outState: Bundle, outPersistentState: PersistableBundle) {
+//        super.onSaveInstanceState(outState, outPersistentState)
+//
+//        outState.putString("rng", display_result.toString())
+//    }
+//
+//    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+//        super.onRestoreInstanceState(savedInstanceState)
+//
+//        display_result.text = savedInstanceState.getString("rng")
 //    }
 }

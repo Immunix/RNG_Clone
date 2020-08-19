@@ -1,81 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/lotto_main_lay"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#eeeeee"
     tools:context=".LottoFragment">
 
-    <FrameLayout
-        android:id="@+id/top_title"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="16dp"
-        android:textStyle="bold">
+        android:background="#eeeeee"
+        tools:context=".LottoFragment">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="@string/lotto_title"
-            android:textSize="16sp"
-            android:textStyle="bold" />
-    </FrameLayout>
-
-    <LinearLayout
-        android:id="@+id/lotto_lin_1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/top_title"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginVertical="16dp"
-            android:layout_weight="1"
-            android:text="@string/lotto_question" />
-
-        <Spinner
-            android:id="@+id/lotto_spinner"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginVertical="16dp" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/lotto_lin_2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/lotto_lin_1">
-
-        <Button
-            android:id="@+id/lotto_button"
-            style="@style/Widget.AppCompat.Button.Colored"
+        <FrameLayout
+            android:id="@+id/top_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginVertical="16dp"
-            android:text="@string/lotto_button" />
+            android:padding="16dp"
+            android:textStyle="bold">
 
-    </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/lotto_title"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+        </FrameLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/lotto_lin_2">
-
-        <TextView
-            android:id="@+id/lotto_results"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/lotto_lin_1"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginVertical="16dp"
-            android:textSize="20sp"
-            android:textStyle="bold" />
+            android:layout_below="@id/top_title"
+            android:background="@color/white"
+            android:orientation="horizontal">
 
-    </LinearLayout>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginVertical="16dp"
+                android:layout_weight="1"
+                android:text="@string/lotto_question" />
 
-</RelativeLayout>
+            <Spinner
+                android:id="@+id/lotto_spinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginVertical="16dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lotto_lin_2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/lotto_lin_1">
+
+            <Button
+                android:id="@+id/lotto_button"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="8dp"
+                android:paddingVertical="20dp"
+                android:text="@string/lotto_button" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lotto_scroll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/lotto_lin_2"
+            android:layout_margin="16dp"
+            android:background="@color/white">
+
+            <TextView
+                android:id="@+id/lotto_results"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginVertical="16dp"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</ScrollView>

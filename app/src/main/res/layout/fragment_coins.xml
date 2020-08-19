@@ -1,86 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/coins_main_lay"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#eeeeee"
     tools:context=".CoinsFragment">
 
-    <FrameLayout
-        android:id="@+id/top_title"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="16dp"
-        android:textStyle="bold">
+        android:background="#eeeeee"
+        tools:context=".CoinsFragment">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="@string/coins_title"
-            android:textSize="16sp"
-            android:textStyle="bold" />
-    </FrameLayout>
-
-    <LinearLayout
-        android:id="@+id/coins_lin_1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/top_title"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginVertical="16dp"
-            android:layout_weight="1"
-            android:text="@string/coins_question" />
-
-        <EditText
-            android:id="@+id/coins_input"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginVertical="16dp"
-            android:layout_weight="0.5"
-            android:background="@null"
-            android:gravity="center_horizontal"
-            android:importantForAutofill="no"
-            android:inputType="number"
-            android:maxLength="4"
-            android:maxLines="1"
-            android:textAlignment="center"
-            android:textColor="@color/colorPrimary"
-            android:textSize="20sp"
-            android:textStyle="bold" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/coins_lin_2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/coins_lin_1">
-
-        <Button
-            android:id="@+id/coins_button"
-            style="@style/Widget.AppCompat.Button.Colored"
+        <FrameLayout
+            android:id="@+id/top_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginVertical="16dp"
-            android:text="@string/coins_button" />
+            android:padding="16dp"
+            android:textStyle="bold">
 
-    </LinearLayout>
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/coins_lin_2">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/coins_title"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+        </FrameLayout>
 
         <LinearLayout
+            android:id="@+id/coins_lin_1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_below="@id/top_title"
+            android:background="@color/white"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginVertical="16dp"
+                android:layout_weight="1"
+                android:text="@string/coins_question" />
+
+            <EditText
+                android:id="@+id/coins_input"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginVertical="16dp"
+                android:layout_weight="0.5"
+                android:background="@null"
+                android:gravity="center_horizontal"
+                android:importantForAutofill="no"
+                android:inputType="number"
+                android:maxLength="4"
+                android:maxLines="1"
+                android:textAlignment="center"
+                android:textColor="@color/colorPrimary"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/coins_lin_2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/coins_lin_1">
+
+            <Button
+                android:id="@+id/coins_button"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="8dp"
+                android:paddingVertical="20dp"
+                android:text="@string/coins_button" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/coins_scroll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/coins_lin_2"
+            android:layout_margin="16dp"
+            android:background="@color/white"
             android:orientation="vertical">
 
             <TextView
@@ -108,6 +116,7 @@
                 android:textStyle="bold" />
 
         </LinearLayout>
-    </ScrollView>
 
-</RelativeLayout>
+    </RelativeLayout>
+
+</ScrollView>

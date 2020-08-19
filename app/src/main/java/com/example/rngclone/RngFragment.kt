@@ -2,6 +2,7 @@ package com.example.rngclone
 
 import android.annotation.SuppressLint
 import android.app.AlertDialog
+import android.content.Intent
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
@@ -14,6 +15,19 @@ import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_rng.*
 
 class RngFragment : Fragment() {
+
+    private val numGenerated = ArrayList<String>() // array to store the numbers
+
+//    override fun onActivityCreated(savedInstanceState: Bundle?) {
+//        super.onActivityCreated(savedInstanceState)
+//
+//        if (savedInstanceState != null) {
+//
+//            //val foo = savedInstanceState.getStringArrayList("results")
+//            display_result.text = savedInstanceState.getString("results")  //foo?.asIterable()?.joinToString(", ")
+//            rng_scroll.visibility = View.VISIBLE
+//        }
+//    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,7 +45,6 @@ class RngFragment : Fragment() {
         edit_txt_max.setText("1000")
         total_num.setText("1")
 
-        val numGenerated = ArrayList<String>() // array to store the numbers
         var result: Int
 
         // trying to handle excluded numbers with an AlertDialog
@@ -56,12 +69,18 @@ class RngFragment : Fragment() {
                 // start intent here
                 // trying to replicate the placement of the rng app
                 // to my understanding functionally they are the same
+                val intent = Intent(context, ExcludedNumbersActivity::class.java)
+                startActivity(intent)
             }
 
             alert.create().show()
         }
 
+        rng_scroll.visibility = View.GONE // making the ScrollView invisible until button clicked
+
         rng_generate_btn.setOnClickListener {
+
+            rng_scroll.visibility = View.VISIBLE
 
             // check for min < max
             if (edit_txt_min.text.toString().toInt() < edit_txt_max.text.toString().toInt()) {
@@ -89,6 +108,13 @@ class RngFragment : Fragment() {
             }
         }
     }
+
+    // doesnt work either with the numGenerated array or with the TextView
+//    override fun onSaveInstanceState(outState: Bundle) {
+//        super.onSaveInstanceState(outState)
+//
+//        outState.putString("results", display_result.toString())
+//    }
 }
 
 // TODO: 10/08/2020 perhaps another array for a list of excluded numbers

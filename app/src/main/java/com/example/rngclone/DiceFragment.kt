@@ -48,8 +48,11 @@ class DiceFragment : Fragment() {
         sides_5.setOnClickListener { num_dice_sides.setText("12") }
         sides_6.setOnClickListener { num_dice_sides.setText("20") }
 
-        // rng logic
+        dice_scroll.visibility = View.GONE
+
         btn_roll.setOnClickListener {
+
+            dice_scroll.visibility = View.VISIBLE
 
             // check to see if we have sides and num of rolls
             if (num_dice_rolls.text.toString().toInt() != 0 && num_dice_sides.text.toString()

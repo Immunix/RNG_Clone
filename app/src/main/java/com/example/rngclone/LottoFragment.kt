@@ -49,7 +49,11 @@ class LottoFragment : Fragment() {
             }
         }
 
+        lotto_scroll.visibility = View.GONE
+
         lotto_button.setOnClickListener {
+
+            lotto_scroll.visibility = View.VISIBLE
 
             if (lotto_results != null) {
                 lottoArray.clear()

@@ -32,7 +32,11 @@ class CoinsFragment : Fragment() {
         var headsCount = 0 // tracking the no of heads/tails to display them
         var tailsCount = 0
 
+        coins_scroll.visibility = View.GONE
+
         coins_button.setOnClickListener {
+
+            coins_scroll.visibility = View.VISIBLE
 
             // check to see if we have at least 1 coin
             if (coins_input.text.toString().toInt() != 0) {
