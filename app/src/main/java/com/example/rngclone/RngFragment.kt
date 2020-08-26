@@ -2,6 +2,7 @@ package com.example.rngclone
 
 import android.annotation.SuppressLint
 import android.app.AlertDialog
+import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
@@ -9,6 +10,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_rng.*
 
@@ -39,8 +41,11 @@ class RngFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         edit_txt_min.setText("1") // default values for EditTexts
+        edit_txt_min.setSelection(edit_txt_min.text.length) // cursor at end of ET
         edit_txt_max.setText("1000")
+        edit_txt_max.setSelection(edit_txt_max.text.length)
         total_num.setText("1")
+        total_num.setSelection(total_num.text.length)
 
         var result: Int
 
@@ -103,7 +108,15 @@ class RngFragment : Fragment() {
                     .setTextColor(Color.WHITE)
                     .show()
             }
+
+            it.hideKeyboard()
         }
+    }
+
+    // hide the keyboard when generating results
+    private fun View.hideKeyboard() {
+        val inputManager = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        inputManager.hideSoftInputFromWindow(windowToken, 0)
     }
 
     // doesn't work either with the numGenerated array or with the TextView
@@ -113,5 +126,3 @@ class RngFragment : Fragment() {
 //        outState.putString("results", display_result.toString())
 //    }
 }
-
-// TODO: 10/08/2020 perhaps another array for a list of excluded numbers

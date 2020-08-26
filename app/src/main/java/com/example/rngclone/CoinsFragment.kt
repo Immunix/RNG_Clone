@@ -1,12 +1,14 @@
 package com.example.rngclone
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_coins.*
 
@@ -24,6 +26,7 @@ class CoinsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         coins_input.setText("1") // default case for no of flips
+        coins_input.setSelection(coins_input.text.length) // attempt to put cursor at end of line
         var result: Int // var to store flip results and use it outside of the for loop
         val flipResults = ArrayList<String>() // wondering if i can just use a string instead of this
         var headsCount = 0 // tracking the no of heads/tails to display them
@@ -65,6 +68,13 @@ class CoinsFragment : Fragment() {
                     .setTextColor(Color.WHITE)
                     .show()
             }
+
+            it.hideKeyboard()
         }
+    }
+
+    private fun View.hideKeyboard() {
+        val inputManager = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        inputManager.hideSoftInputFromWindow(windowToken, 0)
     }
 }

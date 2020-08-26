@@ -1,12 +1,14 @@
 package com.example.rngclone
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_dice.*
 
@@ -25,6 +27,8 @@ class DiceFragment : Fragment() {
 
         num_dice_rolls.setText("1") // default for num of dice being rolled
         num_dice_sides.setText("6") // default for # of die sides
+        num_dice_rolls.setSelection(num_dice_rolls.text.length)
+        num_dice_sides.setSelection(num_dice_sides.text.length)
 
         val resultsArray = ArrayList<String>() // array to store the roll results
         var dieSum = 0 // variable to hold the sum of the rolls
@@ -79,6 +83,13 @@ class DiceFragment : Fragment() {
                     .setTextColor(Color.WHITE)
                     .show()
             }
+
+            it.hideKeyboard()
         }
+    }
+
+    private fun View.hideKeyboard() {
+        val inputManager = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        inputManager.hideSoftInputFromWindow(windowToken, 0)
     }
 }

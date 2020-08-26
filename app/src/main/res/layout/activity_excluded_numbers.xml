@@ -34,11 +34,13 @@
         android:padding="6dp">
 
         <EditText
+            android:id="@+id/excluded_input"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:hint="@string/excluded_hint"
             android:importantForAutofill="no"
+            android:imeOptions="actionDone"
             android:inputType="number"
             android:maxLength="9"
             android:maxLines="1"
@@ -61,8 +63,8 @@
         android:layout_below="@id/excluded_lin_lay"
         android:orientation="vertical">
 
-        <ListView
-            android:id="@+id/excluded_lv"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
