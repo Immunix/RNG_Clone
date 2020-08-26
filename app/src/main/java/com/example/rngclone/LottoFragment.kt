@@ -1,6 +1,5 @@
 package com.example.rngclone
 
-import android.os.Build
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -8,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import androidx.annotation.RequiresApi
 import kotlinx.android.synthetic.main.fragment_lotto.*
 
 class LottoFragment : Fragment() {
@@ -22,7 +20,6 @@ class LottoFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_lotto, container, false)
     }
 
-    @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -41,7 +38,7 @@ class LottoFragment : Fragment() {
 
         spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
             override fun onNothingSelected(p0: AdapterView<*>?) {
-
+                // I don't know if it's okay to leave it empty
             }
 
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
@@ -72,8 +69,7 @@ class LottoFragment : Fragment() {
         }
     }
 
-    @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
-    fun lottoRoFun () {
+    private fun lottoRoFun () {
         var num: Int
 
          while (lottoArray.size <= 5) {
@@ -87,8 +83,7 @@ class LottoFragment : Fragment() {
         }
     }
 
-    @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
-    fun lotto5Fun () { // can be changed to something else. used just as a placeholder
+    private fun lotto5Fun () { // can be changed to something else. used just as a placeholder
         var num: Int
 
         while (lottoArray.size <= 4) {

@@ -4,13 +4,11 @@ import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.content.Intent
 import android.graphics.Color
-import android.os.Build
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.annotation.RequiresApi
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_rng.*
 
@@ -37,7 +35,6 @@ class RngFragment : Fragment() {
     }
 
     @SuppressLint("SetTextI18n", "ResourceAsColor")
-    @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -109,7 +106,7 @@ class RngFragment : Fragment() {
         }
     }
 
-    // doesnt work either with the numGenerated array or with the TextView
+    // doesn't work either with the numGenerated array or with the TextView
 //    override fun onSaveInstanceState(outState: Bundle) {
 //        super.onSaveInstanceState(outState)
 //

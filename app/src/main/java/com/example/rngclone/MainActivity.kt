@@ -1,20 +1,16 @@
 package com.example.rngclone
 
-import android.os.Build
 import android.os.Bundle
-import android.os.PersistableBundle
 import android.view.Menu
 import android.view.MenuInflater
-import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.viewpager.widget.ViewPager
 import com.google.android.material.tabs.TabLayout
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.fragment_rng.*
 
 class MainActivity : AppCompatActivity() {
-    @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -23,7 +19,7 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(toolbar_main as Toolbar?)
         supportActionBar?.setDisplayShowTitleEnabled(true)
 
-        // initializing TabLayout and ViewPager
+        // TabLayout and ViewPager IDs
         val tabBar = findViewById<TabLayout>(R.id.tab_layout)
         val viewPag = findViewById<ViewPager>(R.id.viewPager)
 
@@ -46,6 +42,7 @@ class MainActivity : AppCompatActivity() {
                 viewPag.currentItem = tab.position
         }})
 
+        /*
         // not sure if this does anything for me. gotta ask konrad
         //if (savedInstanceState == null) {
 //            supportFragmentManager
@@ -59,6 +56,8 @@ class MainActivity : AppCompatActivity() {
 //            supportFragmentManager.getFragment(savedInstanceState, "LottoFrag")
 //            supportFragmentManager.getFragment(savedInstanceState, "CoinsFrag")
 //        }
+
+         */
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -88,6 +87,7 @@ class MainActivity : AppCompatActivity() {
 
  */
 
+/*
 //    override fun onSaveInstanceState(outState: Bundle, outPersistentState: PersistableBundle) {
 //        super.onSaveInstanceState(outState, outPersistentState)
 //
@@ -99,4 +99,6 @@ class MainActivity : AppCompatActivity() {
 //
 //        display_result.text = savedInstanceState.getString("rng")
 //    }
+
+ */
 }
