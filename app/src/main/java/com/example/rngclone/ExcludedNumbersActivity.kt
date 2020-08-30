@@ -1,5 +1,6 @@
 package com.example.rngclone
 
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,6 +10,7 @@ import android.widget.TextView
 import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_excluded_numbers.*
 
 class ExcludedNumbersActivity : AppCompatActivity() {
@@ -19,11 +21,13 @@ class ExcludedNumbersActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_excluded_numbers)
 
+        val min = intent.getIntExtra("Min", 1)
+        val max = intent.getIntExtra("Max", 1000)
+
         // Dealing with the RecyclerView.
         val recyclerView: RecyclerView = findViewById(R.id.recycler_view)
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = Adapter(excludedNumbers)
-
 
         // showing toolbar
         setSupportActionBar(toolbar_excluded as Toolbar?)
@@ -33,24 +37,71 @@ class ExcludedNumbersActivity : AppCompatActivity() {
         supportActionBar?.setDisplayShowHomeEnabled(true)
 
         excluded_add_btn.setOnClickListener {
-            // on click add the currently input num
-            excludedNumbers.add(excluded_input.text.toString())
-            (recyclerView.adapter as Adapter).notifyDataSetChanged()
-        }
+            val input = excluded_input.text.toString()
 
-        save_btn.setOnClickListener {
-            // send the numbers to the rng fragment
+            // check for empty input
+            if (input.isEmpty()) {
+                Snackbar.make(
+                    excluded_relative,
+                    "Please make sure that your input is a valid number.",
+                    Snackbar.LENGTH_SHORT
+                )
+                    .setBackgroundTint(Color.BLACK)
+                    .setTextColor(Color.WHITE)
+                    .show()
+            } else {
+                // check to see if it matches the correct range
+                if (input.toInt() !in min until (max + 1)) {
 
-            finish() // just testing to see if it returns when i click save
+                    Snackbar.make(
+                        excluded_relative,
+                        "Please enter in a number in the proper range. ($min to $max)",
+                        Snackbar.LENGTH_SHORT
+                    )
+                        .setBackgroundTint(Color.BLACK)
+                        .setTextColor(Color.WHITE)
+                        .show()
+                } else {
+                    // check if number already added
+                    if (input !in excludedNumbers) {
+                        excludedNumbers.add(input)
+                        excluded_input.text.clear()
+                        (recyclerView.adapter as Adapter).notifyDataSetChanged()
+                    } else {
+                        Snackbar.make(
+                            excluded_relative,
+                            "You are already excluding this number.",
+                            Snackbar.LENGTH_SHORT
+                        )
+                            .setBackgroundTint(Color.BLACK)
+                            .setTextColor(Color.WHITE)
+                            .show()
+                    }
+                }
+            }
+            // idk how to send the nums back yet
+            save_btn.setOnClickListener {
+                // send the numbers to the rng fragment
+                val bundle = Bundle()
+                bundle.putStringArrayList("ExcludedList", excludedNumbers)
+                RngFragment().arguments = bundle
+
+                supportFragmentManager.beginTransaction()
+                    .commit()
+
+                finish() // just testing to see if it returns when i click save
+            }
         }
     }
 
-    class Adapter(private val list: ArrayList<String>): RecyclerView.Adapter<Adapter.ViewHolder>() {
+    class Adapter(private val list: ArrayList<String>) :
+        RecyclerView.Adapter<Adapter.ViewHolder>() {
 
         override fun getItemCount() = list.size
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-            val itemView = LayoutInflater.from(parent.context).inflate(R.layout.recycler_item_cell, parent, false)
+            val itemView = LayoutInflater.from(parent.context)
+                .inflate(R.layout.recycler_item_cell, parent, false)
             return ViewHolder(itemView)
         }
 
@@ -58,10 +109,11 @@ class ExcludedNumbersActivity : AppCompatActivity() {
             holder.textView?.text = list[position]
         }
 
-        class ViewHolder(itemView: View?): RecyclerView.ViewHolder(itemView!!) {
+        class ViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView!!) {
             var textView: TextView? = null
+
             init {
-                textView = itemView?.findViewById(R.id.recyclerText)
+                textView = itemView?.findViewById(R.id.recycler_text)
             }
         }
     }

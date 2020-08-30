@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/excluded_relative"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ExcludedNumbersActivity">
@@ -39,8 +40,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:hint="@string/excluded_hint"
-            android:importantForAutofill="no"
             android:imeOptions="actionDone"
+            android:importantForAutofill="no"
             android:inputType="number"
             android:maxLength="9"
             android:maxLines="1"

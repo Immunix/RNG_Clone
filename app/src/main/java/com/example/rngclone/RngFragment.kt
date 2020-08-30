@@ -40,6 +40,13 @@ class RngFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // Get back the excluded list of numbers
+        val a = RngFragment().arguments // fix  this when i come back from vienna
+        val excludedList = a?.getStringArrayList("ExcludedList")//Bundle().getStringArrayList("ExcludedList")
+        if (excludedList != null) {
+            btn_excluded.text = excludedList.asIterable().joinToString(", ")
+        }
+
         edit_txt_min.setText("1") // default values for EditTexts
         edit_txt_min.setSelection(edit_txt_min.text.length) // cursor at end of ET
         edit_txt_max.setText("1000")
@@ -72,6 +79,8 @@ class RngFragment : Fragment() {
                 // trying to replicate the placement of the rng app
                 // to my understanding functionally they are the same
                 val intent = Intent(context, ExcludedNumbersActivity::class.java)
+                intent.putExtra("Min", edit_txt_min.text.toString().toInt())
+                intent.putExtra("Max", edit_txt_max.text.toString().toInt())
                 startActivity(intent)
             }
 
