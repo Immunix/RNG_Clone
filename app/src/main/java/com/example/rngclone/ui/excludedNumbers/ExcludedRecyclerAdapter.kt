@@ -23,6 +23,10 @@ class ExcludedRecyclerAdapter(private val excludedList: ArrayList<String>) : Rec
 
         holder.textView.text = currentItem
 
+        holder.removeButton.setOnClickListener {
+            excludedList.removeAt(position)
+            notifyDataSetChanged()
+        }
     }
 
     override fun getItemCount() = excludedList.size

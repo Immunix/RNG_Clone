@@ -18,6 +18,7 @@ import kotlinx.android.synthetic.main.activity_excluded_numbers.*
 class ExcludedNumbersActivity : AppCompatActivity() {
 
     private val excludedNumbers = ArrayList<String>()
+    private val adapter = ExcludedRecyclerAdapter(excludedNumbers)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,7 +28,7 @@ class ExcludedNumbersActivity : AppCompatActivity() {
         val max = intent.getIntExtra("Max", 1000)
 
         val recyclerView: RecyclerView = findViewById(R.id.recycler_view)
-        recyclerView.adapter = ExcludedRecyclerAdapter(excludedNumbers)
+        recyclerView.adapter = adapter
 
         // showing toolbar
         setSupportActionBar(toolbar_excluded as Toolbar?)
@@ -79,6 +80,9 @@ class ExcludedNumbersActivity : AppCompatActivity() {
                     }
                 }
             }
+
+
+
             // idk how to send the nums back yet
             save_btn.setOnClickListener {
                 // send the numbers to the rng fragment
