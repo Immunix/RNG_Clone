@@ -1,4 +1,4 @@
-package com.example.rngclone
+package com.example.rngclone.ui.pages
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -9,6 +9,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
+import com.example.rngclone.R
+import com.example.rngclone.utils.randomNumber
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_dice.*
 

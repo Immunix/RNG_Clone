@@ -1,4 +1,4 @@
-package com.example.rngclone
+package com.example.rngclone.ui.pages
 
 import android.annotation.SuppressLint
 import android.app.AlertDialog
@@ -11,23 +11,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
+import com.example.rngclone.ui.excludedNumbers.ExcludedNumbersActivity
+import com.example.rngclone.R
+import com.example.rngclone.utils.randomNumber
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_rng.*
 
 class RngFragment : Fragment() {
 
     private val numGenerated = ArrayList<String>() // array to store the numbers
-
-//    override fun onActivityCreated(savedInstanceState: Bundle?) {
-//        super.onActivityCreated(savedInstanceState)
-//
-//        if (savedInstanceState != null) {
-//
-//            //val foo = savedInstanceState.getStringArrayList("results")
-//            display_result.text = savedInstanceState.getString("results")  //foo?.asIterable()?.joinToString(", ")
-//            rng_scroll.visibility = View.VISIBLE
-//        }
-//    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -128,10 +120,4 @@ class RngFragment : Fragment() {
         inputManager.hideSoftInputFromWindow(windowToken, 0)
     }
 
-    // doesn't work either with the numGenerated array or with the TextView
-//    override fun onSaveInstanceState(outState: Bundle) {
-//        super.onSaveInstanceState(outState)
-//
-//        outState.putString("results", display_result.toString())
-//    }
 }

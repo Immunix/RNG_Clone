@@ -1,4 +1,4 @@
-package com.example.rngclone
+package com.example.rngclone.ui.excludedNumbers
 
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
@@ -10,6 +10,8 @@ import android.widget.TextView
 import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.rngclone.R
+import com.example.rngclone.ui.pages.RngFragment
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_excluded_numbers.*
 
@@ -24,10 +26,8 @@ class ExcludedNumbersActivity : AppCompatActivity() {
         val min = intent.getIntExtra("Min", 1)
         val max = intent.getIntExtra("Max", 1000)
 
-        // Dealing with the RecyclerView.
         val recyclerView: RecyclerView = findViewById(R.id.recycler_view)
-        recyclerView.layoutManager = LinearLayoutManager(this)
-        recyclerView.adapter = Adapter(excludedNumbers)
+        recyclerView.adapter = ExcludedRecyclerAdapter(excludedNumbers)
 
         // showing toolbar
         setSupportActionBar(toolbar_excluded as Toolbar?)
@@ -66,7 +66,7 @@ class ExcludedNumbersActivity : AppCompatActivity() {
                     if (input !in excludedNumbers) {
                         excludedNumbers.add(input)
                         excluded_input.text.clear()
-                        (recyclerView.adapter as Adapter).notifyDataSetChanged()
+                        (recyclerView.adapter as ExcludedRecyclerAdapter).notifyDataSetChanged()
                     } else {
                         Snackbar.make(
                             excluded_relative,
@@ -90,30 +90,6 @@ class ExcludedNumbersActivity : AppCompatActivity() {
                     .commit()
 
                 finish() // just testing to see if it returns when i click save
-            }
-        }
-    }
-
-    class Adapter(private val list: ArrayList<String>) :
-        RecyclerView.Adapter<Adapter.ViewHolder>() {
-
-        override fun getItemCount() = list.size
-
-        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-            val itemView = LayoutInflater.from(parent.context)
-                .inflate(R.layout.recycler_item_cell, parent, false)
-            return ViewHolder(itemView)
-        }
-
-        override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-            holder.textView?.text = list[position]
-        }
-
-        class ViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView!!) {
-            var textView: TextView? = null
-
-            init {
-                textView = itemView?.findViewById(R.id.recycler_text)
             }
         }
     }

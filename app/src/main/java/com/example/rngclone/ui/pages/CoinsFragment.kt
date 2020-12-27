@@ -1,4 +1,4 @@
-package com.example.rngclone
+package com.example.rngclone.ui.pages
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -9,6 +9,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
+import com.example.rngclone.R
+import com.example.rngclone.utils.randomNumber
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_coins.*
 
@@ -63,7 +65,7 @@ class CoinsFragment : Fragment() {
                 no_heads.text = "# of heads: $headsCount"
                 no_tails.text = "# of tails: $tailsCount"
             } else {
-                Snackbar.make(coins_main_lay, "The maximum must be greater than the minimum!", Snackbar.LENGTH_SHORT)
+                Snackbar.make(coins_main_lay, "You must flip at least 1 coin!", Snackbar.LENGTH_SHORT)
                     .setBackgroundTint(Color.BLACK)  // idk how to set my color to colorAccent. it looks weird
                     .setTextColor(Color.WHITE)
                     .show()

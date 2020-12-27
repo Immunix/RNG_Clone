@@ -1,8 +1,12 @@
-package com.example.rngclone
+package com.example.rngclone.ui.pages
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
+import com.example.rngclone.ui.pages.CoinsFragment
+import com.example.rngclone.ui.pages.DiceFragment
+import com.example.rngclone.ui.pages.LottoFragment
+import com.example.rngclone.ui.pages.RngFragment
 
 @Suppress("DEPRECATION")
 class PagerAdapter(fm: FragmentManager?, private val numOfTabs: Int) : FragmentPagerAdapter(fm!!) {
@@ -22,5 +26,3 @@ class PagerAdapter(fm: FragmentManager?, private val numOfTabs: Int) : FragmentP
         return numOfTabs
     }
 }
-
-// TODO: 15/08/2020 Look for a solution to the deprecation issue

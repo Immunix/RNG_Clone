@@ -1,4 +1,4 @@
-package com.example.rngclone
+package com.example.rngclone.ui.pages
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,6 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import com.example.rngclone.R
+import com.example.rngclone.utils.randomNumber
 import kotlinx.android.synthetic.main.fragment_lotto.*
 
 class LottoFragment : Fragment() {
