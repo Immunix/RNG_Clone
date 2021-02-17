@@ -3,14 +3,10 @@ package com.example.rngclone.ui.excludedNumbers
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.widget.TextView
 import androidx.appcompat.widget.Toolbar
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.rngclone.R
+import com.example.rngclone.adapters.ExcludedRecyclerAdapter
 import com.example.rngclone.ui.pages.RngFragment
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_excluded_numbers.*

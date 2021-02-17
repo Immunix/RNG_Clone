@@ -1,4 +1,4 @@
-package com.example.rngclone.ui.pages
+package com.example.rngclone.adapters
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
@@ -7,6 +7,9 @@ import com.example.rngclone.ui.pages.CoinsFragment
 import com.example.rngclone.ui.pages.DiceFragment
 import com.example.rngclone.ui.pages.LottoFragment
 import com.example.rngclone.ui.pages.RngFragment
+
+
+// switch to VP2 and the recycler adapter
 
 @Suppress("DEPRECATION")
 class PagerAdapter(fm: FragmentManager?, private val numOfTabs: Int) : FragmentPagerAdapter(fm!!) {

@@ -33,7 +33,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/top_title"
-            android:background="@color/white"
+            android:background="@color/colorWhite"
             android:orientation="horizontal">
 
             <TextView
@@ -77,7 +77,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/lotto_lin_2"
             android:layout_margin="16dp"
-            android:background="@color/white">
+            android:background="@color/colorWhite">
 
             <TextView
                 android:id="@+id/lotto_results"
