@@ -7,7 +7,7 @@ import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.RecyclerView
 import com.example.rngclone.R
 import com.example.rngclone.adapters.ExcludedRecyclerAdapter
-import com.example.rngclone.ui.pages.RngFragment
+import com.example.rngclone.ui.rng.RngFragment
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_excluded_numbers.*
 

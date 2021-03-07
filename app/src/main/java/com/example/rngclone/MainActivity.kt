@@ -5,50 +5,54 @@ import android.view.Menu
 import android.view.MenuInflater
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-import androidx.viewpager.widget.ViewPager
+import androidx.viewpager2.widget.ViewPager2
 import com.example.rngclone.adapters.PagerAdapter
+import com.example.rngclone.databinding.ActivityMainBinding
 import com.google.android.material.tabs.TabLayout
-import kotlinx.android.synthetic.main.activity_main.*
+import com.google.android.material.tabs.TabLayoutMediator
+import java.lang.Exception
 
 class MainActivity : AppCompatActivity() {
 
+    private lateinit var binding: ActivityMainBinding
+    private lateinit var viewPagerAdapter: PagerAdapter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         // Toolbar stuff
-        setSupportActionBar(toolbar_main as Toolbar?)
+        setSupportActionBar(binding.toolbarMain.root as Toolbar?)
         supportActionBar?.setDisplayShowTitleEnabled(true)
 
-        // TabLayout and ViewPager IDs
-        val tabBar = findViewById<TabLayout>(R.id.tab_layout)
-        val viewPag = findViewById<ViewPager>(R.id.viewPager)
-
-        // PagerAdapter stuff. need to know more about this
-        val pagerAdapter =
-            PagerAdapter(supportFragmentManager, tabBar.tabCount)
-        viewPag.adapter = pagerAdapter
-        viewPag.offscreenPageLimit = 3 // this makes the tabs not reset but i don't like it!!
-
-        // careful next time. i used the id of viewPager instead of using the variable so it didn't work at first
-        viewPag.addOnPageChangeListener(
-            TabLayout.TabLayoutOnPageChangeListener(tab_layout)
+        val tabNames = listOf(
+            getString(R.string.rng_fragment_title),
+            getString(R.string.dice_fragment_title),
+            getString(R.string.lotto_fragment_title),
+            getString(R.string.coins_fragment_title)
         )
-        tab_layout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
 
-            override fun onTabReselected(tab: TabLayout.Tab?) {}
+        binding.apply {
+            viewPagerAdapter = PagerAdapter(this@MainActivity)
+            viewPager.adapter = viewPagerAdapter
+            tabLayout.setupWithViewPager(viewPager, tabNames)
+        }
+    }
 
-            override fun onTabUnselected(tab: TabLayout.Tab?) {}
+    private fun TabLayout.setupWithViewPager(viewPager: ViewPager2, labels: List<String>) {
 
-            override fun onTabSelected(tab: TabLayout.Tab) {
-                viewPag.currentItem = tab.position
-            }
-        })
+        if (labels.size != viewPager.adapter?.itemCount)
+            throw Exception("Size of the list and tab count should be equal")
 
+        TabLayoutMediator(
+            this, viewPager
+        ) { tab, position ->
+            tab.text = labels[position]
+        }.attach()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        // Display menu icons
         val inflater: MenuInflater = menuInflater
         inflater.inflate(R.menu.settings_menu, menu)
         return true

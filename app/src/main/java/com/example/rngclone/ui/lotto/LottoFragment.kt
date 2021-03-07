@@ -1,4 +1,4 @@
-package com.example.rngclone.ui.pages
+package com.example.rngclone.ui.lotto
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

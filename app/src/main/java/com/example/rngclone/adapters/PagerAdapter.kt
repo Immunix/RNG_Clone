@@ -1,31 +1,25 @@
 package com.example.rngclone.adapters
 
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentPagerAdapter
-import com.example.rngclone.ui.pages.CoinsFragment
-import com.example.rngclone.ui.pages.DiceFragment
-import com.example.rngclone.ui.pages.LottoFragment
-import com.example.rngclone.ui.pages.RngFragment
+import androidx.fragment.app.FragmentActivity
+import androidx.viewpager2.adapter.FragmentStateAdapter
+import com.example.rngclone.ui.coins.CoinsFragment
+import com.example.rngclone.ui.dice.DiceFragment
+import com.example.rngclone.ui.lotto.LottoFragment
+import com.example.rngclone.ui.rng.RngFragment
 
+class PagerAdapter(fa: FragmentActivity) :
+    FragmentStateAdapter(fa) {
 
-// switch to VP2 and the recycler adapter
-
-@Suppress("DEPRECATION")
-class PagerAdapter(fm: FragmentManager?, private val numOfTabs: Int) : FragmentPagerAdapter(fm!!) {
-
-    override fun getItem(position: Int): Fragment {
-
+    override fun createFragment(position: Int): Fragment {
         return when (position) {
             0 -> RngFragment()
             1 -> DiceFragment()
             2 -> LottoFragment()
             3 -> CoinsFragment()
-            else -> throw IllegalAccessException("?????????idk?????????")
+            else -> throw IllegalAccessException("ViewPager")
         }
     }
 
-    override fun getCount(): Int {
-        return numOfTabs
-    }
+    override fun getItemCount(): Int = 4
 }

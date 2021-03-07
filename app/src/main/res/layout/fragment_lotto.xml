@@ -5,13 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#eeeeee"
-    tools:context=".ui.pages.LottoFragment">
+    tools:context=".ui.lotto.LottoFragment">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#eeeeee"
-        tools:context=".ui.pages.LottoFragment">
+        tools:context=".ui.lotto.LottoFragment">
 
         <FrameLayout
             android:id="@+id/top_title"

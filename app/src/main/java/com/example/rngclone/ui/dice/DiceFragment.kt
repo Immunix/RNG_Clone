@@ -1,4 +1,4 @@
-package com.example.rngclone.ui.pages
+package com.example.rngclone.ui.dice
 
 import android.annotation.SuppressLint
 import android.content.Context
