@@ -4,13 +4,11 @@
     android:id="@+id/lotto_main_lay"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#eeeeee"
     tools:context=".ui.lotto.LottoFragment">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#eeeeee"
         tools:context=".ui.lotto.LottoFragment">
 
         <FrameLayout
@@ -33,7 +31,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/top_title"
-            android:background="@color/colorWhite"
             android:orientation="horizontal">
 
             <TextView
@@ -76,8 +73,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/lotto_lin_2"
-            android:layout_margin="16dp"
-            android:background="@color/colorWhite">
+            android:layout_margin="16dp">
 
             <TextView
                 android:id="@+id/lotto_results"
@@ -89,7 +85,5 @@
                 android:textStyle="bold" />
 
         </LinearLayout>
-
     </RelativeLayout>
-
 </ScrollView>

@@ -26,13 +26,6 @@ class ExcludedNumbersActivity : AppCompatActivity() {
         val recyclerView: RecyclerView = findViewById(R.id.recycler_view)
         recyclerView.adapter = adapter
 
-        // showing toolbar
-        setSupportActionBar(toolbar_excluded as Toolbar?)
-        supportActionBar?.setDisplayShowTitleEnabled(true)
-        supportActionBar?.title = "Edit Excluded Numbers"
-        supportActionBar?.setDisplayHomeAsUpEnabled(true) // back button just because
-        supportActionBar?.setDisplayShowHomeEnabled(true)
-
         excluded_add_btn.setOnClickListener {
             val input = excluded_input.text.toString()
 
@@ -92,10 +85,5 @@ class ExcludedNumbersActivity : AppCompatActivity() {
                 finish() // just testing to see if it returns when i click save
             }
         }
-    }
-
-    override fun onSupportNavigateUp(): Boolean {
-        onBackPressed()
-        return true
     }
 }

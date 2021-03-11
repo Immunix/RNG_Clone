@@ -22,10 +22,6 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Toolbar stuff
-        setSupportActionBar(binding.toolbarMain.root as Toolbar?)
-        supportActionBar?.setDisplayShowTitleEnabled(true)
-
         val tabNames = listOf(
             getString(R.string.rng_fragment_title),
             getString(R.string.dice_fragment_title),
