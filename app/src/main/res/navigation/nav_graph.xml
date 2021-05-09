@@ -1,5 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/nav_graph">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/mainActivity">
 
+    <activity
+        android:id="@+id/mainActivity"
+        android:name="com.example.rngclone.MainActivity"
+        android:label="activity_main"
+        tools:layout="@layout/activity_main" />
+    <fragment
+        android:id="@+id/rngFragment"
+        android:name="com.example.rngclone.ui.rng.RngFragment"
+        android:label="fragment_rng"
+        tools:layout="@layout/fragment_rng" >
+        <action
+            android:id="@+id/action_rngFragment_to_excludedNumbersFragment"
+            app:destination="@id/excludedNumbersFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/diceFragment"
+        android:name="com.example.rngclone.ui.dice.DiceFragment"
+        android:label="fragment_dice"
+        tools:layout="@layout/fragment_dice" />
+    <fragment
+        android:id="@+id/lottoFragment"
+        android:name="com.example.rngclone.ui.lotto.LottoFragment"
+        android:label="fragment_lotto"
+        tools:layout="@layout/fragment_lotto" />
+    <fragment
+        android:id="@+id/coinsFragment"
+        android:name="com.example.rngclone.ui.coins.CoinsFragment"
+        android:label="fragment_coins"
+        tools:layout="@layout/fragment_coins" />
+    <fragment
+        android:id="@+id/excludedNumbersFragment"
+        android:name="com.example.rngclone.ui.excludedNumbers.ExcludedNumbersFragment"
+        android:label="fragment_excluded_numbers"
+        tools:layout="@layout/fragment_excluded_numbers" />
 </navigation>

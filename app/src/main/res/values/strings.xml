@@ -47,7 +47,7 @@
     <string name="coins_question">How many coins are you flipping?</string>
     <string name="coins_button">Flip</string>
 
-    <!--EXCLUDED ACTIVITY-->
+    <!--EXCLUDED FRAGMENT-->
     <string name="excluded_title">NOTE: Changing the minimum/maximum resets this list.</string>
     <string name="excluded_hint">Number to exclude</string>
     <string name="excluded_save">Save</string>

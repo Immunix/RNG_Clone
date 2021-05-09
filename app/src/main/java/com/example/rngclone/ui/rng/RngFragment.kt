@@ -11,7 +11,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
-import com.example.rngclone.ui.excludedNumbers.ExcludedNumbersActivity
+import com.example.rngclone.ui.excludedNumbers.ExcludedNumbersFragment
 import com.example.rngclone.R
 import kotlinx.android.synthetic.main.fragment_rng.*
 
@@ -68,7 +68,7 @@ class RngFragment : Fragment() {
                 // start intent here
                 // trying to replicate the placement of the rng app
                 // to my understanding functionally they are the same
-                val intent = Intent(context, ExcludedNumbersActivity::class.java)
+                val intent = Intent(context, ExcludedNumbersFragment::class.java)
                 intent.putExtra("Min", edit.text.toString().toInt())
                 //intent.putExtra("Max", input_maximum.text.toString().toInt())
                 startActivity(intent)
