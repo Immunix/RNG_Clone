@@ -68,8 +68,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
-            android:layout_marginVertical="16dp"
             android:layout_weight="1"
+            android:paddingVertical="12dp"
             android:text="@string/numbers_needed"
             app:layout_constraintEnd_toStartOf="@id/total_generated"
             app:layout_constraintStart_toStartOf="parent"
@@ -92,8 +92,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
-            android:layout_marginVertical="16dp"
             android:layout_weight="1"
+            android:paddingVertical="12dp"
             android:text="@string/exclude_numbers"
             app:layout_constraintEnd_toStartOf="@id/btn_excluded"
             app:layout_constraintStart_toStartOf="parent"
@@ -127,17 +127,14 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_excluded" />
 
-        <com.google.android.material.textview.MaterialTextView
+        <include
             android:id="@+id/display_result"
-            style="@style/TextAppearance.MaterialComponents.Body1"
+            layout="@layout/results_cell"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginVertical="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/rng_generate_btn"
-            tools:text="12311241" />
+            app:layout_constraintTop_toBottomOf="@+id/rng_generate_btn" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

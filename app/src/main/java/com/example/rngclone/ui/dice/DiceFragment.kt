@@ -70,9 +70,9 @@ class DiceFragment : Fragment() {
 
                 for (i in 1..num_dice_rolls.text.toString()
                     .toInt()) { // not sure if this is the best way
-                    result = randomNumber(1, num_dice_sides.text.toString().toInt())
-                    resultsArray.add(result.toString())
-                    dieSum += result
+//                    result = randomNumber(1, num_dice_sides.text.toString().toInt())
+//                    resultsArray.add(result.toString())
+//                    dieSum += result
                 }
 
                 roll_result.text =

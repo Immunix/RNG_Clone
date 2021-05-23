@@ -75,7 +75,7 @@ class LottoFragment : Fragment() {
         var num: Int
 
          while (lottoArray.size <= 5) {
-             num = randomNumber(1, 49)
+             num = 0//randomNumber(1, 49)
 
              if (num !in lottoArray) {
                  lottoArray.add(num)
@@ -89,7 +89,7 @@ class LottoFragment : Fragment() {
         var num: Int
 
         while (lottoArray.size <= 4) {
-            num = randomNumber(1, 40)
+            num = 0//randomNumber(1, 40)
 
             if (num !in lottoArray) {
                 lottoArray.add(num)

@@ -4,7 +4,7 @@
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryVariant">@color/colorPrimaryDark</item>
-        <item name="colorOnPrimary">@color/colorWhite</item>
+        <item name="colorOnPrimary">@color/colorAccent</item>
 
         <!--Surfaces such as ViewPager & TabLayout-->
         <item name="colorSurface">@color/colorPrimaryDark</item>

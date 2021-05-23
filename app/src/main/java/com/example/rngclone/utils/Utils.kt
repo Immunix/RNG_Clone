@@ -10,9 +10,13 @@ Changed from ThreadLocalRandom because it was generating the same sequence of nu
 phone was restarted. Closing the app normally or force closing it would not change the sequence.
  */
 
-fun randomNumber (startNum: Int, endNum: Int): Int {
-    val random = Random
-    return random.nextInt(startNum, endNum + 1)
+fun randomNumber (min: Int, max: Int, iterations: Int): List<Int> {
+    val resultList: ArrayList<Int> = ArrayList()
+
+    for (num in 0..iterations) {
+        resultList.add(Random.nextInt(min, max + 1))
+    }
+    return resultList
 }
 
 fun View.hideKeyboard() {
