@@ -1,14 +1,13 @@
-package com.example.rngclone.adapters
+package com.example.rngclone.ui.viewpager
 
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.rngclone.ui.coins.CoinsFragment
 import com.example.rngclone.ui.dice.DiceFragment
 import com.example.rngclone.ui.lotto.LottoFragment
 import com.example.rngclone.ui.rng.RngFragment
 
-class PagerAdapter(fa: FragmentActivity) :
+class PagerAdapter(fa: ViewPagerFragment) :
     FragmentStateAdapter(fa) {
 
     override fun createFragment(position: Int): Fragment {

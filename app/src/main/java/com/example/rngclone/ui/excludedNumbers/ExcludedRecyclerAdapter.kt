@@ -1,4 +1,4 @@
-package com.example.rngclone.adapters
+package com.example.rngclone.ui.excludedNumbers
 
 import android.view.LayoutInflater
 import android.view.View

@@ -4,9 +4,10 @@ import android.app.AlertDialog
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.View
+import com.example.rngclone.R
 import com.example.rngclone.databinding.FragmentRngBinding
 
-class RngFragment : Fragment() {
+class RngFragment : Fragment(R.layout.fragment_rng) {
 
     private var _binding: FragmentRngBinding? = null
     private val binding get() = _binding!!
