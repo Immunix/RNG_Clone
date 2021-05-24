@@ -5,11 +5,11 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.View
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.Observer
 import com.example.rngclone.R
 import com.example.rngclone.databinding.FragmentRngBinding
 import com.example.rngclone.utils.hideKeyboard
 import com.example.rngclone.utils.randomNumber
+import com.google.android.material.snackbar.Snackbar
 
 class RngFragment : Fragment(R.layout.fragment_rng) {
 
@@ -36,15 +36,31 @@ class RngFragment : Fragment(R.layout.fragment_rng) {
 
             rngGenerateBtn.setOnClickListener {
                 rngViewModel.apply {
-                    setResults( randomNumber(
-                        getMin().value!!.toInt(),
-                        getMax().value!!.toInt(),
-                        getIterations().value!!.toInt()
-                    ) as List<String> )
+                    setMin(inputMinimum.root.text.toString())
+                    setMax(inputMaximum.root.text.toString())
+                    setIterations(totalGenerated.root.text.toString())
+
+                    if (getMin().value!!.toInt() >= getMax().value!!.toInt()) {
+                        Snackbar.make(
+                            it,
+                            "The maximum must be larger than the minimum!",
+                            Snackbar.LENGTH_SHORT
+                        ).show()
+                    } else {
+                        setResults(
+                            randomNumber(
+                                getMin().value!!.toInt(),
+                                getMax().value!!.toInt(),
+                                getIterations().value!!.toInt()
+                            )
+                        )
+                    }
                 }
 
-                displayResult.root.text = rngViewModel.getResults().value.toString()
-                displayResult.root.visibility = View.VISIBLE
+                displayResult.root.apply {
+                    text = rngViewModel.getResults().value?.joinToString()
+                    visibility = View.VISIBLE
+                }
 
                 it.hideKeyboard()
             }
