@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import com.example.rngclone.R
-import com.example.rngclone.utils.randomNumber
 import kotlinx.android.synthetic.main.fragment_lotto.*
 
 class LottoFragment : Fragment() {

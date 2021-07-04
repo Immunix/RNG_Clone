@@ -5,10 +5,11 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.View
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import com.example.rngclone.R
 import com.example.rngclone.databinding.FragmentRngBinding
 import com.example.rngclone.utils.hideKeyboard
-import com.example.rngclone.utils.randomNumber
+import com.example.rngclone.utils.getRandomNumber
 import com.google.android.material.snackbar.Snackbar
 
 class RngFragment : Fragment(R.layout.fragment_rng) {
@@ -48,7 +49,7 @@ class RngFragment : Fragment(R.layout.fragment_rng) {
                         ).show()
                     } else {
                         setResults(
-                            randomNumber(
+                            getRandomNumber(
                                 getMin().value!!.toInt(),
                                 getMax().value!!.toInt(),
                                 getIterations().value!!.toInt()
@@ -71,11 +72,17 @@ class RngFragment : Fragment(R.layout.fragment_rng) {
                 alert.setTitle("Excluded Numbers")
                 alert.setMessage("You currently aren't preventing any numbers from being generated.")
 
-                alert.setNeutralButton("CLEAR") { _, _ -> }
+                alert.setNeutralButton("CLEAR") { _, _ ->
+                    // clear the list of numbers
+                }
 
-                alert.setPositiveButton("OK") { _, _ -> }
+                alert.setPositiveButton("OK") { _, _ ->
+                    // do nothing?
+                }
 
-                alert.setNegativeButton("EDIT") { _, _ -> }
+                alert.setNegativeButton("EDIT") { _, _ ->
+                    findNavController().navigate(R.id.excludedNumbersFragment)
+                }
 
                 alert.create().show()
             }

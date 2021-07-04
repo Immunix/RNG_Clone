@@ -32,12 +32,16 @@
     <fragment
         android:id="@+id/excludedNumbersFragment"
         android:name="com.example.rngclone.ui.excludedNumbers.ExcludedNumbersFragment"
-        android:label="fragment_excluded_numbers"
-        tools:layout="@layout/fragment_excluded_numbers" />
+        android:label="Excluded Numbers"
+        tools:layout="@layout/fragment_excluded_numbers" >
+        <action
+            android:id="@+id/action_excludedNumbersFragment_to_rngFragment"
+            app:destination="@id/rngFragment" />
+    </fragment>
     <fragment
         android:id="@+id/viewPagerFragment"
         android:name="com.example.rngclone.ui.viewpager.ViewPagerFragment"
-        android:label="ViewPagerFragment">
+        android:label="Random Number Generator">
         <action
             android:id="@+id/action_viewPagerFragment_to_rngFragment"
             app:destination="@id/rngFragment" />

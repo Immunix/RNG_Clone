@@ -2,22 +2,15 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <item android:id="@+id/history_btn"
+    <item
+        android:id="@+id/history_btn"
         android:icon="@drawable/ic_history_icon"
         android:title="@string/history_button"
-        app:showAsAction="ifRoom"/>
+        app:showAsAction="ifRoom" />
 
-    <item android:id="@+id/settings_btn"
+    <item
+        android:id="@+id/settings_btn"
         android:icon="@drawable/ic_settings_icon"
         android:title="@string/settings_button"
-        app:showAsAction="ifRoom">
-
-        <menu>
-            <item android:id="@+id/setting1"
-                android:title="Example Setting"/>
-
-            <item android:id="@+id/setting2"
-                android:title="Example Setting2"/>
-        </menu>
-    </item>
+        app:showAsAction="ifRoom" />
 </menu>

@@ -4,4 +4,4 @@ import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-data class ExcludedValues(private val value: Int) : Parcelable
+data class ExcludedValues(val value: Int) : Parcelable
